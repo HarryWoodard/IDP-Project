@@ -20,9 +20,15 @@ public class Player_Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        rb.linearVelocity = moveInput * moveSpeed;
+        Vector2 moveVelocity = moveInput;
+        if (moveVelocity.sqrMagnitude > 1f)
+        {
+            moveVelocity.Normalize();
+        }
+
+        rb.linearVelocity = moveVelocity * moveSpeed;
     }
 
     public void Move(InputAction.CallbackContext context)
