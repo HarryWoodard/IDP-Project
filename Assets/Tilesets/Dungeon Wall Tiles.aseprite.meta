@@ -187,7 +187,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Right_Dungeon_Side_Wall_Corner_Top
+  - name: Right_Dungeon_Wall_Miscellaneous_4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -208,7 +208,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Left_Dungeon_Side_Wall_Corner_Top
+  - name: Left_Dungeon_Wall_Miscellaneous_4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -229,7 +229,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Right_Dungeon_Wall_Front_Corner
+  - name: Right_Dungeon_Wall_Miscellaneous_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -250,7 +250,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Left_Dungeon_Wall_Front_Corner
+  - name: Left_Dungeon_Wall_Miscellaneous_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -376,48 +376,6 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Left_Dungeon_Side_Wall_Bottom
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 211
-      y: 228
-      width: 16
-      height: 16
-    spriteID: f84cd15ab4e99444ab698a986d431248
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: Right_Dungeon_Side_Wall_Bottom
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 254
-      y: 228
-      width: 16
-      height: 16
-    spriteID: 7ea81303bdd81744e81175f6eebed358
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
   - name: Left_Dungeon_Side_Wall
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -460,7 +418,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Right_Dungeon_Wall_Front_Corner_Overlay
+  - name: Right_Dungeon_Wall_Miscellaneous_2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -481,7 +439,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Left_Dungeon_Wall_Front_Corner_Overlay
+  - name: Left_Dungeon_Wall_Miscellaneous_2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -502,7 +460,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Right_Dungeon_Side_Wall_Corner_Bottom
+  - name: Right_Dungeon_Wall_Miscellaneous_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -523,7 +481,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Left_Dungeon_Side_Wall_Corner_Bottom
+  - name: Left_Dungeon_Wall_Miscellaneous_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -536,6 +494,195 @@ ScriptedImporter:
       width: 16
       height: 16
     spriteID: ad586672d6c3c6548bf9d3b3d976ea5a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Dungeon_Wall_Front_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 109
+      y: 207
+      width: 16
+      height: 16
+    spriteID: e79c93a8d8434964086ce6f5bcc6dfa8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Dungeon_Wall_Front_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 126
+      y: 207
+      width: 16
+      height: 16
+    spriteID: 5494c976252f51a40a79e119045fda0b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Dungeon_Wall_Front_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 143
+      y: 207
+      width: 16
+      height: 16
+    spriteID: 408b3015a61f26f4a9b965c2d57c9d2d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Dungeon_Wall_Front_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 207
+      width: 16
+      height: 16
+    spriteID: 8394aaafda63daa4a8f93f3e08da9780
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Dungeon_Wall_Door_Unlocked
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 109
+      y: 189
+      width: 16
+      height: 16
+    spriteID: d288509f31e0c054cbe43bd4ec39f557
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Right_Dungeon_Wall_Miscellaneous_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 267
+      y: 369
+      width: 16
+      height: 16
+    spriteID: aa2222532f6cea94b9089a6e7017a676
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Right_Dungeon_Wall_Miscellaneous_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 267
+      y: 348
+      width: 16
+      height: 16
+    spriteID: 14b81e5c3b939fd4c985e0348e03a214
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Left_Dungeon_Wall_Miscellaneous_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 299
+      y: 369
+      width: 16
+      height: 16
+    spriteID: b45af39c8f6623048b8f0071b6dddc1e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Left_Dungeon_Wall_Miscellaneous_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 299
+      y: 348
+      width: 16
+      height: 16
+    spriteID: 6bc23feda9aa730418d26338098bdacf
     spriteBone: []
     spriteOutline: []
     vertices: []
