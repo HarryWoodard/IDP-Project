@@ -145,7 +145,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: Player Character_0
+  - name: Player Character_9
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -166,7 +166,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Player Character_1
+  - name: Player Character_10
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -187,7 +187,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Player Character_2
+  - name: Player Character_11
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -334,7 +334,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Player Character_9
+  - name: Player Character_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -355,7 +355,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Player Character_10
+  - name: Player Character_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -376,7 +376,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Player Character_11
+  - name: Player Character_2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
