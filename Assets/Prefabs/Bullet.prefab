@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8975443492313181124}
   - component: {fileID: 1550750446067501572}
   - component: {fileID: 313388487360503663}
+  - component: {fileID: 4609113947330272274}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -54,6 +55,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -75,8 +78,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 759574655
-  m_SortingLayer: 3
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: -1812401881
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7166656953650317147, guid: c7c373f5994711a47abca77909bf6335, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,3 +157,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 0.5}
   m_Direction: 0
+--- !u!114 &4609113947330272274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826060641042896638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b712ade7801724f9b6f6652445dd02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet

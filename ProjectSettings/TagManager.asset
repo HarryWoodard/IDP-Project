@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -41,26 +41,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 4251578031
-    locked: 0
-  - name: Ground
-    uniqueID: 4117105731
+  - name: Floor
+    uniqueID: 501500135
     locked: 0
   - name: WalkInFront
-    uniqueID: 759574655
-    locked: 0
-  - name: Collision
-    uniqueID: 3870976055
+    uniqueID: 2482565415
     locked: 0
   - name: Player
-    uniqueID: 1361976657
+    uniqueID: 1494338001
     locked: 0
   - name: WalkBehind
-    uniqueID: 2488672139
+    uniqueID: 1739735073
     locked: 0
   - name: Decor
-    uniqueID: 3826019545
+    uniqueID: 624825481
     locked: 0
   m_RenderingLayers:
   - Default
