@@ -111,4 +111,15 @@ public class Zombie_Movement : MonoBehaviour
         if (!awareness.AwareOfPlayer && moveDirection != Vector2.zero)        
             nextWanderChange = Time.time;
     }
+
+    public void ResetState() // Function that resets zombie to it's original state after player leaves the room
+    {
+        // Stand still * not aware of player
+        rb.linearVelocity = Vector2.zero;
+        moveDirection = Vector2.zero;
+        currentSpeed = 0f;
+        wasAware = false;
+        
+        nextWanderChange = Time.time + Random.Range(pauseTimeRange.x, pauseTimeRange.y); // Stand still for a moment before wandering
+    }
 }

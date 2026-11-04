@@ -2,23 +2,34 @@ using Newtonsoft.Json;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditor.SceneManagement;
+#endif
 
 // Reads a level JSON file, checks it with LevelValidator, then builds it:
 // paints tiles, spawns zombies, creates camera boundaries and room-transition doors,
 // and moves the player to the start. Put this on an empty GameObject.
+//
+// Two ways to use it:
+//  1. BAKE (for hand-editing): right-click the component header > "Build Level (Editor)".
+//     Everything is saved into the scene, so you can paint over it. Untick "Build On Start".
+//  2. RUNTIME: leave "Build On Start" ticked and the level is rebuilt every time you press Play.
 public class LevelBuilder : MonoBehaviour
 {
     [Header("Level file")]
     [SerializeField] private TextAsset levelJson;
-    [SerializeField] private bool buildOnStart = true;
+    [SerializeField] private bool buildOnStart = false;   // tick for runtime generation; UNTICK after baking
 
     [Header("Tilemaps in the scene")]
     [SerializeField] private Tilemap groundMap;
     [SerializeField] private Tilemap wallMap;
+    [Tooltip("Optional. Paint your own decoration here. The builder NEVER clears this map.")]
+    [SerializeField] private Tilemap decorationMap;
 
     [Header("Tiles")]
-    [SerializeField] private TileBase[] plainFloorTiles;   // most of the floor
-    [SerializeField] private TileBase[] detailFloorTiles;  // cracked / dark floor, used occasionally
+    [SerializeField] private TileBase[] plainFloorTiles;
+    [SerializeField] private TileBase[] detailFloorTiles;
     [SerializeField, Range(0f, 1f)] private float detailFloorChance = 0.15f;
     [SerializeField] private TileBase[] wallTiles;
 
@@ -28,14 +39,13 @@ public class LevelBuilder : MonoBehaviour
     [Header("Validation rules")]
     [SerializeField] private LevelValidationSettings rules = new LevelValidationSettings();
 
-    private GameObject levelRoot;   // everything generated is parented here so it can be cleared
+    private const string RootName = "GeneratedLevel";
 
     private void Start()
     {
-        if (buildOnStart) BuildLevel();
+        if (Application.isPlaying && buildOnStart) BuildLevel();
     }
 
-    // Right-click the component header to run these.
     [ContextMenu("Validate Level Only")]
     public void ValidateOnly()
     {
@@ -44,14 +54,10 @@ public class LevelBuilder : MonoBehaviour
         Report(level, LevelValidator.Validate(level, rules));
     }
 
-    [ContextMenu("Build Level")]
+    // Works in the editor AND in Play mode.
+    [ContextMenu("Build Level (Editor)")]
     public void BuildLevel()
     {
-        if (!Application.isPlaying)
-        {
-            Debug.LogWarning("LevelBuilder: enter Play mode to build the level.");
-            return;
-        }
         if (!HasRequiredReferences()) return;
 
         LevelData level = LoadLevel();
@@ -62,10 +68,9 @@ public class LevelBuilder : MonoBehaviour
         if (!result.IsValid) return;   // never build a level that failed validation
 
         ClearLevel();
-        levelRoot = new GameObject("GeneratedLevel");
+        GameObject levelRoot = new GameObject(RootName);
         EnsureWallPhysics();
 
-        // System.Random with the level's seed: same seed = same tile variation every time.
         var rng = new System.Random(level.seed);
         var roomBounds = new PolygonCollider2D[level.rooms.Count];
 
@@ -90,18 +95,34 @@ public class LevelBuilder : MonoBehaviour
                     {
                         groundMap.SetTile(cell, PickFloor(rng));
                         if (ch == LevelLegend.Zombie)
-                            Instantiate(zombiePrefab, groundMap.GetCellCenterWorld(cell), Quaternion.identity, levelRoot.transform);
+                            SpawnZombie(groundMap.GetCellCenterWorld(cell), levelRoot.transform);
                     }
                 }
             }
 
-            roomBounds[ri] = CreateRoomBounds(room.id, room.x, room.y, w, h);
+            roomBounds[ri] = CreateRoomBounds(levelRoot.transform, room.id, room.x, room.y, w, h);
         }
 
-        CreateDoors(level, result, roomBounds);
+        CreateDoors(levelRoot.transform, level, result, roomBounds);
         PlacePlayer(result, roomBounds);
+        MarkSceneChanged();
 
         Debug.Log("LevelBuilder: built '" + level.name + "' (" + level.rooms.Count + " rooms, " + result.doors.Count + " doors, " + result.zombieCells.Count + " zombies).");
+    }
+
+    [ContextMenu("Clear Generated Level")]
+    public void ClearGeneratedLevel()
+    {
+        if (!HasMaps()) return;
+        ClearLevel();
+        MarkSceneChanged();
+    }
+
+    private bool HasMaps()
+    {
+        if (groundMap != null && wallMap != null) return true;
+        Debug.LogError("LevelBuilder: assign the Ground Map and Wall Map.");
+        return false;
     }
 
     private bool HasRequiredReferences()
@@ -151,14 +172,43 @@ public class LevelBuilder : MonoBehaviour
         else Debug.Log(report);
     }
 
+    // Removes the previous build. The decoration map is deliberately left alone.
     private void ClearLevel()
     {
-        if (levelRoot != null) Destroy(levelRoot);
+        // Looked up by name (not stored) so it also works after a script reload or scene save.
+        GameObject old;
+        while ((old = GameObject.Find(RootName)) != null)
+        {
+            if (Application.isPlaying) Destroy(old);
+            else DestroyImmediate(old);
+            if (Application.isPlaying) break;   // Destroy is delayed, so the loop would never end
+        }
         groundMap.ClearAllTiles();
         wallMap.ClearAllTiles();
     }
 
-    // Walls need a merged collider so the player and zombies cannot walk through them.
+    private void SpawnZombie(Vector3 position, Transform parent)
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            // PrefabUtility keeps the prefab link, so editing the prefab later updates baked zombies too.
+            var z = (GameObject)PrefabUtility.InstantiatePrefab(zombiePrefab, parent);
+            z.transform.position = position;
+            return;
+        }
+#endif
+        Instantiate(zombiePrefab, position, Quaternion.identity, parent);
+    }
+
+    private void MarkSceneChanged()
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+            EditorSceneManager.MarkSceneDirty(gameObject.scene);
+#endif
+    }
+
     private void EnsureWallPhysics()
     {
         var body = wallMap.GetComponent<Rigidbody2D>();
@@ -173,12 +223,10 @@ public class LevelBuilder : MonoBehaviour
             wallMap.gameObject.AddComponent<CompositeCollider2D>();
     }
 
-    // The rectangle the camera is kept inside while the player is in this room.
-    // It is a trigger so it never blocks anything physically.
-    private PolygonCollider2D CreateRoomBounds(string id, int x, int y, int w, int h)
+    private PolygonCollider2D CreateRoomBounds(Transform parent, string id, int x, int y, int w, int h)
     {
         var go = new GameObject("RoomBounds_" + id);
-        go.transform.SetParent(levelRoot.transform, false);   // levelRoot sits at the origin, so local = world
+        go.transform.SetParent(parent, false);
 
         Vector2 min = groundMap.CellToWorld(new Vector3Int(x, y, 0));
         Vector2 max = groundMap.CellToWorld(new Vector3Int(x + w, y + h, 0));
@@ -189,7 +237,7 @@ public class LevelBuilder : MonoBehaviour
         return poly;
     }
 
-    private void CreateDoors(LevelData level, LevelValidationResult result, PolygonCollider2D[] roomBounds)
+    private void CreateDoors(Transform parent, LevelData level, LevelValidationResult result, PolygonCollider2D[] roomBounds)
     {
         foreach (DoorInfo d in result.doors)
         {
@@ -197,7 +245,7 @@ public class LevelBuilder : MonoBehaviour
             Vector3 max = groundMap.CellToWorld(new Vector3Int(d.cells.xMax, d.cells.yMax, 0));
 
             var go = new GameObject("Door_" + level.rooms[d.negativeRoom].id + "_" + level.rooms[d.positiveRoom].id);
-            go.transform.SetParent(levelRoot.transform, false);
+            go.transform.SetParent(parent, false);
             go.transform.position = (min + max) / 2f;
 
             var box = go.AddComponent<BoxCollider2D>();
@@ -223,25 +271,27 @@ public class LevelBuilder : MonoBehaviour
         Vector3 delta = target - player.transform.position;
 
         var body = player.GetComponent<Rigidbody2D>();
-        if (body != null)
+        if (body != null && Application.isPlaying)
         {
             body.position = target;
             body.linearVelocity = Vector2.zero;
         }
         player.transform.position = target;
 
-        // Point the camera at the starting room and snap it there.
         var confiner = FindAnyObjectByType<CinemachineConfiner2D>();
         if (confiner == null) return;
 
         confiner.BoundingShape2D = roomBounds[result.playerRoom];
-        confiner.InvalidateBoundingShapeCache();
 
-        var vcam = confiner.GetComponent<CinemachineCamera>();
-        if (vcam != null)
+        if (Application.isPlaying)
         {
-            vcam.OnTargetObjectWarped(player.transform, delta);
-            vcam.PreviousStateIsValid = false;
+            confiner.InvalidateBoundingShapeCache();
+            var vcam = confiner.GetComponent<CinemachineCamera>();
+            if (vcam != null)
+            {
+                vcam.OnTargetObjectWarped(player.transform, delta);
+                vcam.PreviousStateIsValid = false;
+            }
         }
     }
 

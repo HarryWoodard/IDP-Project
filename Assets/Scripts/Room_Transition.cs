@@ -26,6 +26,8 @@ public class RoomTransition : MonoBehaviour // Handles what happens when player 
         roomPositive = positiveRoom;
     }
 
+    public static event System.Action<PolygonCollider2D> RoomEntered; // Event fired when player passes through a door.
+
     private void Awake()
     {
         confiner = FindAnyObjectByType<CinemachineConfiner2D>();
@@ -48,6 +50,8 @@ public class RoomTransition : MonoBehaviour // Handles what happens when player 
         // When player enters new room, camera recalculates and adheres to the new rooms camera boundary
         confiner.BoundingShape2D = goingPositive ? roomPositive : roomNegative;
         confiner.InvalidateBoundingShapeCache();
+
+        RoomEntered?.Invoke(goingPositive ? roomPositive : roomNegative);
 
         Vector3 delta = MovePlayerPastTrigger(collision, goingPositive);
 

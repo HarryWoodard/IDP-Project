@@ -46,4 +46,14 @@ public class Zombie_Health : MonoBehaviour
         spriteRenderer.sharedMaterial = originalMaterial;   // Flash off
         flashRoutine = null;
     }
+
+    public void ResetHealth() // Function that resets zombie health
+    {
+        currentHealth = maxHealth; // Fully restores zombie's health
+
+        // Cancel flash, don't restart and revert back to original look
+        if (flashRoutine != null) StopCoroutine(flashRoutine);
+        flashRoutine = null;
+        spriteRenderer.sharedMaterial = originalMaterial;
+    }
 }

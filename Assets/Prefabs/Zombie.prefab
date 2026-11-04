@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2473564408697602157}
   - component: {fileID: -8197909797000404511}
   - component: {fileID: 4222954276725684083}
+  - component: {fileID: -6891824850639595504}
   m_Layer: 7
   m_Name: Zombie
   m_TagString: Untagged
@@ -236,6 +237,18 @@ MonoBehaviour:
   maxHealth: 10
   flashDuration: 0.1
   flashMaterial: {fileID: 2100000, guid: 99355c1a2dab09746866e5bd5f224d90, type: 2}
+--- !u!114 &-6891824850639595504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504228297262821600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d337d129984ef7e4fb9e7d2c7003b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Zombie_Reset
 --- !u!1 &8803534815922959952
 GameObject:
   m_ObjectHideFlags: 0
