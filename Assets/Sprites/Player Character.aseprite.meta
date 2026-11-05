@@ -157,7 +157,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 3
+      x: 4
       y: 40
       width: 16
       height: 16
@@ -178,7 +178,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 19
+      x: 20
       y: 40
       width: 16
       height: 16
@@ -199,7 +199,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 35
+      x: 36
       y: 40
       width: 16
       height: 16
@@ -220,7 +220,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 3
+      x: 4
       y: 22
       width: 16
       height: 16
@@ -241,7 +241,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 19
+      x: 20
       y: 22
       width: 16
       height: 16
@@ -262,7 +262,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 35
+      x: 36
       y: 22
       width: 16
       height: 16
@@ -283,7 +283,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 3
+      x: 4
       y: 4
       width: 16
       height: 16
@@ -304,7 +304,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 19
+      x: 20
       y: 4
       width: 16
       height: 16
@@ -325,7 +325,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 35
+      x: 36
       y: 4
       width: 16
       height: 16
@@ -346,7 +346,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 3
+      x: 4
       y: 58
       width: 16
       height: 16
@@ -367,7 +367,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 19
+      x: 20
       y: 58
       width: 16
       height: 16
@@ -388,7 +388,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 35
+      x: 36
       y: 58
       width: 16
       height: 16
@@ -419,9 +419,9 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 1
+        x: 0
         y: 1
-        width: 45
+        width: 47
         height: 70
       spriteId: 481dccce1ad02ad4eaa4ae53d94f0d59
     linkedCells: []
